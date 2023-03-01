@@ -10,8 +10,15 @@ def message_count(obj):
     cumul = 1
     depth = obj['depth'] if 'depth' in obj else -1
     print(f"{'  ' * (depth+1)}id: {Fore.RED}{obj['id']}{Style.RESET_ALL}, depth: {depth}, count: {obj['comments_count'] if 'comments_count' in obj else '-'}")
-    for msg in obj['children']:
-        cumul += message_count(msg)
+    if 'children' in obj:
+        for msg in obj['children']:
+            cumul += message_count(msg)
+    if 'non_endorsed_responses' in obj:
+        for msg in obj['non_endorsed_responses']:
+            cumul += message_count(msg)
+    if 'endorsed_responses' in obj:
+        for msg in obj['endorsed_responses']:
+            cumul += message_count(msg)
     print(f"id: {obj['id']} : {cumul} messages")
     return cumul
 
