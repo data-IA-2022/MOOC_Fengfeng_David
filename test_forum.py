@@ -1,5 +1,6 @@
 import json, colorama
 from utils import factorielle, message_count
+from pymongo import MongoClient
 def test_forum():
     with open('datasets/sample.json') as f:
         for line in f:
@@ -18,6 +19,9 @@ def test_fact():
     assert n == 6
     n = factorielle(4)
     assert n == 24
+    
+def test_mongo():
+    url = 'mongodb://localhost:27017'
     
     
     
