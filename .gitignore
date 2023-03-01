@@ -109,6 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+mooc
 
 # Spyder project settings
 .spyderproject
