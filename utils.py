@@ -53,4 +53,7 @@ def get_config(cnx):
     with open('config.yml', 'r') as f:
         config = safe_load(f)
     cfg=config[cnx]
-    return cfg
+    if cnx == 'mysql':
+        return "{driver}://{user}:{password}@{host}:{port}/{database}".format(**cfg)
+    elif cnx == 'mongo':
+        return "{driver}://{host}:{port}".format(**cfg)
