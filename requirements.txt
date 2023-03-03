@@ -4,6 +4,7 @@ colorama==0.4.6
 dnspython==2.3.0
 exceptiongroup==1.1.0
 Flask==2.2.3
+Flask-WTF==1.1.1
 greenlet==2.0.2
 importlib-metadata==6.0.0
 iniconfig==2.0.0
@@ -28,4 +29,5 @@ tomli==2.0.1
 typing_extensions==4.5.0
 utils==1.0.1
 Werkzeug==2.2.3
+WTForms==3.0.1
 zipp==3.15.0
