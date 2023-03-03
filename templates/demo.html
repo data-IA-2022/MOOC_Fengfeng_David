@@ -8,14 +8,13 @@
     <link rel="stylesheet" href={{ url_for('static', filename='styles.css') }}>
 </head>
 <body>
-    <h1>Hello, {{title}}</h1>
-    <div class="x">x = {{x}}</div>
-    <div class="y">y = {{y}}</div>
-    <div class="z">z = {{z}}</div>
+    <h1>Hello, {{ result.content.title }}</h1>
+
+    <div class="query"> {{ result.content.body }}</div>
 
     <ul>
-        {% for item in z %}
-            <li>{{ item }}</li>
+        {% for child in result.content.children %}
+            <li>Reponse de {{ result.username }} le {{ result.created_at }}</li>
         {% endfor %}
     </ul>
 </body>
