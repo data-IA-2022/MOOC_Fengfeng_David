@@ -9,7 +9,6 @@ def process(obj, parent_id=None):
     config_mysql = get_config('mysql')
     url_mysql = "{driver}://{user}:{password}@{host}:{port}/{database}".format(**config_mysql)
     engine = create_engine(url_mysql)
-    print("*** Recur", obj['id'], obj['depth'] if 'depth' in obj else '-')
     username = obj['username'] if 'username' in obj else None
     depth = obj['depth'] if 'depth' in obj else None
     date = obj['created_at']
@@ -27,13 +26,8 @@ def process(obj, parent_id=None):
         
     
 def main():
-    config_mongo = get_config('mongo')
-    config_mysql = get_config('mysql')
-    url = "{driver}://{host}:{port}".format(**config_mongo)
-    url_mysql = "{driver}://{user}:{password}@{host}:{port}/{database}".format(**config_mysql)
-    client = MongoClient(url)
-    engine = create_engine(url_mysql)
-    print(engine)
+    client = MongoClient(get_config("mongo"))
+    engine = create_engine(get_config("mysql"))
     db = client['g3-MOOC']
     forum = db['forum']
     user = db['user']
@@ -52,7 +46,7 @@ def main():
     
     # insert in thread
     
-    cursor = forum.find(filter= None, projection={"annotated_content_info": 0}).limit(1)
+    cursor = forum.find(filter= None, projection={"annotated_content_info": 0}).batch_size(10)
     for doc in cursor:
         print(doc['_id'], doc['content']['course_id'])
         course_id = doc['content']['course_id']
@@ -62,6 +56,7 @@ def main():
         engine.execute(query_course, [course_id])
         engine.execute(query_thread, [thread_id, course_id])
         recur_message(doc['content'], process)
+        print("--------------------------------------------")
         
 
     # recherche content.username
