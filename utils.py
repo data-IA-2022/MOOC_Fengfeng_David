@@ -1,5 +1,6 @@
 from colorama import Fore, Back, Style
 from yaml import safe_load
+from pprint import pprint
 
 def message_count(obj):
     '''
@@ -30,7 +31,7 @@ def factorielle(n):
         resultat = n * factorielle(n-1)
         return resultat
     
-def recur_message(obj, f, parent_id=None):
+def recur_message(obj, f, parent_id=None, thread_id=None):
     '''
     This function must return the number of message
     Parameters: 
@@ -38,16 +39,16 @@ def recur_message(obj, f, parent_id=None):
     Return:
         Number of message
     '''
-    f(obj, parent_id)
+    f(obj, parent_id, thread_id)
     if 'children' in obj:
         for msg in obj['children']:
-            recur_message(msg, f, parent_id=obj['id'])
+            recur_message(msg, f, parent_id=obj['id'],thread_id=thread_id)
     if 'non_endorsed_responses' in obj:
         for msg in obj['non_endorsed_responses']:
-            recur_message(msg, f, parent_id=obj['id'])
+            recur_message(msg, f, parent_id=obj['id'], thread_id=thread_id)
     if 'endorsed_responses' in obj:
         for msg in obj['endorsed_responses']:
-            recur_message(msg, f, parent_id=obj['id'])
+            recur_message(msg, f, parent_id=obj['id'], thread_id=thread_id)
             
 def get_config(cnx):
     with open('config.yml', 'r') as f:
