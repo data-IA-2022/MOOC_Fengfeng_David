@@ -132,3 +132,5 @@ dmypy.json
 # other
 datasets
 notes.md
+config.yml
+.vscode
