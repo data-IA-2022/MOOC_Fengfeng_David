@@ -8,16 +8,17 @@ def process(obj, parent_id=None, thread_id=None):
     depth = obj['depth'] if 'depth' in obj else None
     date = obj['created_at']
     date = date[:10] + ' ' + date[11:19]
+    course_id = obj['course_id']
     condition = not obj['anonymous'] and not obj['anonymous_to_peers']
     if condition:
         query_user = """INSERT INTO User (username, user_id) VALUES (%s,%s) 
                         ON DUPLICATE KEY UPDATE user_id=VALUES(user_id);"""
         engine.execute(query_user, [username, obj['user_id']])
         query_message = """INSERT INTO Message
-                        (id,created_at,type,depth,body,thread_id,username,parent_id) 
-                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
-                        ON DUPLICATE KEY UPDATE parent_id=VALUES(parent_id), depth=VALUES(depth);"""    
-        engine.execute(query_message, [obj['id'],date,obj['type'],depth,obj['body'],thread_id,username,parent_id])
+                        (id,created_at,type,depth,body,thread_id,username,parent_id, course_id) 
+                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                        ON DUPLICATE KEY UPDATE parent_id=VALUES(parent_id), depth=VALUES(depth), course_id=VALUES(course_id);"""    
+        engine.execute(query_message, [obj['id'],date,obj['type'],depth,obj['body'],thread_id,username,parent_id, course_id])
         
         
     
@@ -42,7 +43,7 @@ def main():
     # insert in thread
     
     cursor = forum.find(filter= None, projection={"annotated_obj_info": 0}).batch_size(10)
-    for doc in cursor.limit(50000):
+    for doc in cursor.limit(25000):
         course_id = doc['content']['course_id']
         thread_id = doc['_id']
         print(course_id, thread_id)
