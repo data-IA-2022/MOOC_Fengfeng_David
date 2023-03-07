@@ -63,6 +63,7 @@ six==1.16.0
 SQLAlchemy==1.4.39
 stack-data==0.6.2
 textblob==0.17.1
+textblob-fr==0.2.0
 tomli==2.0.1
 tornado==6.2
 tqdm==4.65.0
