@@ -200,7 +200,7 @@ with mysqlConn.begin() as cnx:
         total_time = time.time()
         print(f"\n ----- EXECUTE {key.upper():10}", end='')
 
-        cnx.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
+        mysqlConn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
 
         print(f" / TIME : {calc_time(total_time)}")
 
