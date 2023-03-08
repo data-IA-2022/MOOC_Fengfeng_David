@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from langdetect import detect
+from polyglot.detect import Detector
+from polyglot.text import Text
 from sqlalchemy import create_engine
 from utils import get_config
 from textblob import TextBlob as tb
@@ -9,26 +10,19 @@ from IPython.display import display
 
 def detect_lang(text):
   try:
-    return detect(text)
+    detect = Detector(text)
+    return detect.language.code
   except Exception:
-    return np.nan
+    return None
 
 def get_polarity(text):
   lang = detect_lang(text)
-  blob = tb(text, pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
-  if lang == "en":
-    try:
-      return tb(text).sentiment.polarity
-    except Exception:
-      return np.nan
-  elif lang == "fr":
-    try:
-      return blob.sentiment[0]
-    except Exception:
-      return np.nan
-  else:
-    return np.nan
-      
+  text_analysed = Text(text, hint_language_code=lang)
+  try:
+    return text_analysed.polarity
+  except Exception:
+    return None
+
 def get_subjectivity(text):
   lang = detect_lang(text)
   blob = tb(text, pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
@@ -36,14 +30,15 @@ def get_subjectivity(text):
     try:
       return tb(text).sentiment.subjectivity
     except Exception:
-      return np.nan
+      return None
   elif lang == "fr":
     try:
       return blob.sentiment[1]
     except Exception:
-      return np.nan
+      return None
   else:
-    return np.nan
+    return None
+      
       
 def get_analysis(score):
   if score < 0:
@@ -59,15 +54,17 @@ def get_analysis2(score):
   elif score > 0.5:
     return "Subjectif"
   else:
-    return np.nan
+    return None
 
 def main():
     engine = create_engine(get_config('mysql'))
     print(engine)
-    df = pd.read_sql("Select username, body, id from Message;", engine)
+    df = pd.read_sql("Select body, id from Message;", engine)
     for (i, row) in df.iterrows():
-      if i>10: quit()
-      print(i, row)
+      print(i)
+      polarity = get_polarity(row['body'])
+      subjectivity = get_subjectivity(row['body'])
+      engine.execute("UPDATE Message SET polarity=%s, subjectivity=%s WHERE id=%s ;", [polarity, subjectivity, row['id']])
 
 if __name__=='__main__':
     main()

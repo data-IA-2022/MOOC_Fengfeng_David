@@ -43,7 +43,7 @@ def main():
     # insert in thread
     
     cursor = forum.find(filter= None, projection={"annotated_obj_info": 0}).batch_size(10)
-    for doc in cursor.limit(25000):
+    for doc in cursor:
         course_id = doc['content']['course_id']
         thread_id = doc['_id']
         print(course_id, thread_id)
@@ -64,8 +64,8 @@ def main():
                 country=result['country'] if 'country' in result else ''
                 education_level=result['level_of_education'] if 'level_of_education' in result else ''
                 gender = result['gender'] if 'gender' in result else ''
-                if gender==None: gender = ""
-                print(' ', user, ' : ', course_id)
+                if gender=='None': gender = ''
+                print(' ', user, ' : ', course_id, gender)
                 query_user = """INSERT INTO User (username,country,gender,education_level) 
                     VALUES(%s,%s,%s,%s)
                     ON DUPLICATE KEY 
