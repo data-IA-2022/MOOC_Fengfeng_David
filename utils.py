@@ -67,4 +67,14 @@ def connect_to_db(config_file, section):
 
         from sqlalchemy import create_engine
 
-        return create_engine(url)
+        return create_engine(url, future=True)
+    
+def get_config(cnx):
+    config_file = relative_path("config_direct.yml")
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+    cfg=config[cnx]
+    if cnx == 'mysql':
+        return "{driver}://{user}:{password}@{host}:{port}/{database}".format(**cfg)
+    elif cnx == 'mongo':
+        return "{driver}://{host}:{port}".format(**cfg)

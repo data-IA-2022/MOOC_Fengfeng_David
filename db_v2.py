@@ -13,7 +13,7 @@ def recur_message(msg, f, thread_id, parent_id = None, course_id=None):
     '''
     #print("Recurse ", obj['id'], obj['depth'] if 'depth' in obj else '-')
 
-    f(msg, thread_id, parent_id)
+    f(msg, thread_id, parent_id, course_id)
 
     if 'children' in msg:
         for child in msg['children']:
@@ -85,8 +85,8 @@ def traitement_user(doc):
 
         stmts['Course'].append({'id': key})
 
-        if 'grade' in doc[key]:
-            stmts['Result'].append({'course_id': key, 'user_id': doc['_id'], 'grade': doc[key]['grade']})
+        if 'grade' in doc[key] and 'Certificate Eligible' in doc[key]:
+            stmts['Result'].append({'course_id': key, 'user_id': doc['_id'], 'grade': doc[key]['grade'], 'eligibility': doc[key]['Certificate Eligible']})
 
         if 'gender' in doc[key]:
             gender = unidecode(doc[key]['gender']).lower() if doc[key]['gender'] not in na else gender
@@ -162,52 +162,55 @@ sshtunnel_mysql = connect_ssh_tunnel(config_file, "ssh_mysql")
 mongoClient = connect_to_db(config_file, "database_mongodb")
 mysqlEngine = connect_to_db(config_file, "database_mysql")
 
-mysqlConn = mysqlEngine.connect().execution_options(isolation_level="AUTOCOMMIT")
-with mysqlConn.begin() as cnx:
-    print(mongoClient)
-    print(mysqlEngine)
+#mysqlConn = mysqlEngine.connect().execution_options(isolation_level="AUTOCOMMIT")
+#print(mysqlConn)
+#mysqlConn.begin()
 
-    META = MetaData()
-    META.reflect(bind=mysqlEngine)
+print(mongoClient)
+print(mysqlEngine)
 
-    stmts = {
-        'User': [],
-        'Thread': [],
-        'Message': [],
-        'Course': [],
-        'Result': [],
-    }
+META = MetaData()
+META.reflect(bind=mysqlEngine)
 
-    db = mongoClient['g3-MOOC']
-    global_time = time.time()
+stmts = {
+    'User': [],
+    'Thread': [],
+    'Message': [],
+    'Course': [],
+    'Result': [],
+}
 
-    print(f"\n ----- DOWNLOAD DATA FROM MONGO", end='')
+db = mongoClient['g3-MOOC']
+global_time = time.time()
 
-    t = time.time()
+print(f"\n ----- DOWNLOAD DATA FROM MONGO", end='')
 
-    cursor_user = db['user'].find()
-    cursor_forum = db['forum'].find()
+t = time.time()
 
-    print(f" / TIME : {calc_time(t)}")
+cursor_user = db['user'].find()
+cursor_forum = db['forum'].find()
 
-    boucles(cursor_user, traitement_user, "user", len(list(cursor_user.clone())), True)
-    boucles(cursor_forum, traitement_forum, "forum", len(list(cursor_forum.clone())), True)
+print(f" / TIME : {calc_time(t)}")
 
-    tables_in_order = ['Course', 'User', 'Result', 'Thread', 'Message']
+boucles(cursor_user, traitement_user, "user", len(list(cursor_user.clone())), True)
+boucles(cursor_forum, traitement_forum, "forum", len(list(cursor_forum.clone())), True)
 
-    for key in tables_in_order:
+tables_in_order = ['Course', 'User', 'Result', 'Thread', 'Message']
 
-        total_time = time.time()
-        print(f"\n ----- EXECUTE {key.upper():10}", end='')
+with mysqlEngine.connect().execution_options(isolation_level="AUTOCOMMIT") as conn:
+    with conn.begin():
+        for key in tables_in_order:
 
-        mysqlConn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
+            total_time = time.time()
+            print(f"\n ----- EXECUTE {key.upper():10}", end='')
+            #mysqlConn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
+            conn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
+            print(f" / TIME : {calc_time(total_time)}")
 
-        print(f" / TIME : {calc_time(total_time)}")
+        print('\n-------- COMMIT')
+        # mysqlConn.commit()
+        print('\n-------- END')
 
-    print('\n-------- COMMIT')
+        print(f"\nTOTAL INSERT COUNT : {sum([len(stmts[key]) for key in stmts])}\n")
 
-    print('\n-------- END')
-
-    print(f"\nTOTAL INSERT COUNT : {sum([len(stmts[key]) for key in stmts])}\n")
-
-    print(f"\nGLOBAL TIME : {calc_time(global_time)}")
+        print(f"\nGLOBAL TIME : {calc_time(global_time)}")

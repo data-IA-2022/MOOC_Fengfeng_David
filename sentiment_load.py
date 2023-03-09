@@ -5,7 +5,8 @@ from polyglot.text import Text
 from textblob import TextBlob as tb
 from textblob_fr import PatternTagger, PatternAnalyzer
 from IPython.display import display
-from utils import relative_path, connect_ssh_tunnel, connect_to_db
+from utils import get_config
+from sqlalchemy import create_engine
 
 def detect_lang(text):
   try:
@@ -56,9 +57,7 @@ def get_analysis2(score):
     return None
 
 def main():
-    config_file = relative_path("config.yml")
-    sshtunnel_mysql = connect_ssh_tunnel(config_file, "ssh_mysql")
-    engine = connect_to_db(config_file, "database_mysql")
+    engine = create_engine(get_config('mysql'))
     print(engine)
     df = pd.read_sql("Select body, id from Message;", engine)
     for (i, row) in df.iterrows():
