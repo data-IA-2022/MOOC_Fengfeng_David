@@ -1,8 +1,9 @@
 import time
 from unidecode import unidecode
-from sqlalchemy import MetaData
+from pymongo import MongoClient
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.dialects.mysql import insert
-from utils import calc_time, connect_ssh_tunnel, connect_to_db, relative_path
+from utils import calc_time, get_config
 
 def recur_message(msg, f, thread_id, parent_id = None, course_id=None):
     '''
@@ -42,7 +43,7 @@ def traitement(msg, thread_id, parent_id=None, course_id=None):
         'id':           msg['id'],
         'type':         msg['type'],
         'created_at':   dt,
-        'username':      msg['username'] if 'username' in msg else None,
+        'username':     msg['username'] if 'username' in msg else None,
         'depth':        msg['depth'] if 'depth' in msg else None,
         'body':         msg['body'],
         'course_id':    course_id,
@@ -53,10 +54,10 @@ def traitement(msg, thread_id, parent_id=None, course_id=None):
     if not msg['anonymous'] and not msg['anonymous_to_peers']:
         stmts['User'].append({
             'username':             msg['username'],
-            'id':                   msg['user_id'],
+            'user_id':              msg['user_id'],
             'country':              None,
             'gender':               None,
-            'level_of_education':   None,
+            'education_level':      None,
             'city':                 None,
             'year_of_birth':        None,
         })
@@ -86,7 +87,7 @@ def traitement_user(doc):
         stmts['Course'].append({'id': key})
 
         if 'grade' in doc[key] and 'Certificate Eligible' in doc[key]:
-            stmts['Result'].append({'course_id': key, 'user_id': doc['_id'], 'grade': doc[key]['grade'], 'eligibility': doc[key]['Certificate Eligible']})
+            stmts['Result'].append({'course_id': key, 'username': doc['username'], 'grade': doc[key]['grade'], 'eligibility': doc[key]['Certificate Eligible']})
 
         if 'gender' in doc[key]:
             gender = unidecode(doc[key]['gender']).lower() if doc[key]['gender'] not in na else gender
@@ -104,20 +105,20 @@ def traitement_user(doc):
             level_of_education = unidecode(doc[key]['level_of_education']).lower() if doc[key]['level_of_education'] not in na else level_of_education
 
     stmts['User'].append({
-        'id':                   doc['_id'],
         'username':             doc['username'],
+        'user_id':              doc['_id'],
         'gender':               gender,
         'year_of_birth':        year_of_birth,
         'city':                 city,
         'country':              country,
-        'level_of_education':   level_of_education,
+        'education_level':      level_of_education,
     })
 
 
 def traitement_forum(doc):
 
     stmts['Course'].append({'id': doc['content']['course_id']})
-    stmts['Thread'].append({'id': doc['_id'], 'course_id': doc['content']['course_id'], 'title': doc['content']['title'], 'comments_count': doc['content']['comments_count']})
+    stmts['Thread'].append({'_id': doc['_id'], 'course_id': doc['content']['course_id'], 'title': doc['content']['title'], 'comments_count': doc['content']['comments_count']})
 
     recur_message(doc['content'], traitement, doc['_id'])
 
@@ -154,17 +155,15 @@ def boucles(cursor, boucle, name_print, len_cursor, print_insert = False):
 
     print(f"--- {name_print} TIME : {calc_time(total_time)}")
 
-config_file = relative_path("config.yml")
+#config_file = relative_path("config_direct.yml")
 
-sshtunnel_mongodb = connect_ssh_tunnel(config_file, "ssh_mongodb")
-sshtunnel_mysql = connect_ssh_tunnel(config_file, "ssh_mysql")
+#sshtunnel_mongodb = connect_ssh_tunnel(config_file, "ssh_mongodb")
+#sshtunnel_mysql = connect_ssh_tunnel(config_file, "ssh_mysql")
 
-mongoClient = connect_to_db(config_file, "database_mongodb")
-mysqlEngine = connect_to_db(config_file, "database_mysql")
-
-#mysqlConn = mysqlEngine.connect().execution_options(isolation_level="AUTOCOMMIT")
-#print(mysqlConn)
-#mysqlConn.begin()
+mongoClient = MongoClient(get_config('mongo'))
+mysqlEngine = create_engine(get_config('mysql'))
+mysqlConn = mysqlEngine.connect().execution_options(isolation_level="AUTOCOMMIT")
+mysqlConn.begin()
 
 print(mongoClient)
 print(mysqlEngine)
@@ -173,11 +172,11 @@ META = MetaData()
 META.reflect(bind=mysqlEngine)
 
 stmts = {
-    'User': [],
-    'Thread': [],
-    'Message': [],
     'Course': [],
+    'Message': [],
     'Result': [],
+    'Thread': [],
+    'User': [],
 }
 
 db = mongoClient['g3-MOOC']
@@ -195,22 +194,21 @@ print(f" / TIME : {calc_time(t)}")
 boucles(cursor_user, traitement_user, "user", len(list(cursor_user.clone())), True)
 boucles(cursor_forum, traitement_forum, "forum", len(list(cursor_forum.clone())), True)
 
-tables_in_order = ['Course', 'User', 'Result', 'Thread', 'Message']
+tables_in_order = ['Course', 'Message', 'Result', 'Thread', 'User']
 
-with mysqlEngine.connect().execution_options(isolation_level="AUTOCOMMIT") as conn:
-    with conn.begin():
-        for key in tables_in_order:
+for key in tables_in_order:
 
-            total_time = time.time()
-            print(f"\n ----- EXECUTE {key.upper():10}", end='')
-            #mysqlConn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
-            conn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
-            print(f" / TIME : {calc_time(total_time)}")
+    total_time = time.time()
+    print(f"\n ----- EXECUTE {key.upper():10}", end='')
+    #mysqlConn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
+    mysqlConn.execute(insert(META.tables[key.strip('_2')]).prefix_with("IGNORE"), stmts[key])
+    print(f" / TIME : {calc_time(total_time)}")
 
-        print('\n-------- COMMIT')
-        # mysqlConn.commit()
-        print('\n-------- END')
+print('\n-------- COMMIT')
+mysqlConn.commit()
+#conn.commit()
+print('\n-------- END')
 
-        print(f"\nTOTAL INSERT COUNT : {sum([len(stmts[key]) for key in stmts])}\n")
+print(f"\nTOTAL INSERT COUNT : {sum([len(stmts[key]) for key in stmts])}\n")
 
-        print(f"\nGLOBAL TIME : {calc_time(global_time)}")
+print(f"\nGLOBAL TIME : {calc_time(global_time)}")

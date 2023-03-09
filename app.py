@@ -8,16 +8,17 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
 from flask_wtf.csrf import CSRFProtect
+from utils import get_config
 
 
 # source venv/bin/activate
 # flask --app app run --debug
 
-with open('config.yml', 'r') as file:
-    config = yaml.safe_load(file)
 
-client = MongoClient(config['mongo'])
-col = client.DEMO.forum
+client = MongoClient(get_config('mongo'))
+db = client['g3-forum']
+forum = db['forum']
+user = db['user']
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
@@ -32,15 +33,11 @@ class MyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
 
 @app.route("/", methods=['POST', 'PUT', 'GET'])
-def hello_world():
+def index():
     #return redirect("/mongo/52ef5cb2d75e29d72b00098e")
-    return "<p>Hello, World !!!!!!!!!</p>"
+    return render_template('index.html')
 
-@app.route("/dyn/<id>", methods=['POST', 'PUT', 'GET'])
-def dynamik(id):
-    print(request.args)
-    return f"<p>ID : {id}, x={request.args.get('x')}, y={request.args.get('y')}</p>"
-
+@app.route('graph', methods=['POST', 'PUT', 'GET'])
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     form = MyForm()
@@ -67,9 +64,6 @@ def demo_mongo():
 
     return render_template('demo1.html', result=result), 202
 
-@app.route("/json", methods=['GET'])
-def demo_json():
-    return jsonify({'x': 100, 'y': 'OK'})
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000, host='0.0.0.0')

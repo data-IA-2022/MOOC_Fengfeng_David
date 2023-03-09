@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Formulaire</title>
 </head>
 <body>
     <form method="POST" action="/mongo">
         {% form.csrf_token %}
+        <input type="text" name="msq" id="msq-ip">
+        <input type="radio" name="gender" id="gender-ip">
+        <input type="radio" name="country" id="contry-ip">
+        <input type="radio" name="education" id="education-ip">
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>
