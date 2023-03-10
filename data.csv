@@ -1,0 +1,598 @@
+,body,polarity,subjectivity,eligibility,gender,education_level,country
+6551,"Concernant le premier programme, la LED s'allume et s'éteint une seul fois et le message suivant s'affiche: avrdude: stk500_getsync(): not in sync: resp=0x00
+Je cherche bien une solution
+
+",0.333333,0.22,0,f,p,MA
+6684,"Bonjour, 
+sur l'excellent site de eskimon http://eskimon.fr/287-arduino-602-un-moteur-qui-de-la-tete-le-servo-moteur, il est précisé :
+""Nous devons lui indiquer la broche sur laquelle est connecté le fil de commande du servo en utilisant la fonction attach() de l’objet Servo créé. Cette fonction prend -3 arguments :-
+
+- Le numéro de la broche sur laquelle est relié le fil de signal
+- La valeur basse (angle à 0°) de la durée de l’état haut du signal de PPM en microsecondes (optionnel, défaut à 544 µs)
+- La valeur haute (angle à 90°, 180°, 360°, etc.) de la durée de l’état haut du signal de PPM en microsecondes (optionnel, défaut à 2400 µs)""
+
+Peut être qu'en indiquant dans la fonction attach() les valeurs limites comme suit attach(brocheservo,477,2150); ? On ne sait jamais.",-0.0909091,0.208333,1,m,jhs,FR
+6686,"Bonjour, j'ai eu aussi ce type d'erreur dans la compilation lorsque j'ai été obligé de revenir à la version 2.0.0 du gestionnaire de carte (suite à problème de reset continu après branchement du retour d'information du servo sur la roche A0).
+
+Dans cette version, j'ai remarqué que la méthode errorToString() ne s'y trouvait pas contrairement à la version 2.2.0 que j'ai remise, et je n'ai plus eu d'erreur ....de compilation car j'hésite maintenant à connecter le retour d'information.
+
+Alain",-0.666667,0.15,1,m,jhs,FR
+6693,"Bonjour, 
+sur l'excellent site de eskimon http://eskimon.fr/287-arduino-602-un-moteur-qui-de-la-tete-le-servo-moteur, il est précisé :
+""Nous devons lui indiquer la broche sur laquelle est connecté le fil de commande du servo en utilisant la fonction attach() de l’objet Servo créé. Cette fonction prend -3 arguments :-
+
+- Le numéro de la broche sur laquelle est relié le fil de signal
+- La valeur basse (angle à 0°) de la durée de l’état haut du signal de PPM en microsecondes (optionnel, défaut à 544 µs)
+- La valeur haute (angle à 90°, 180°, 360°, etc.) de la durée de l’état haut du signal de PPM en microsecondes (optionnel, défaut à 2400 µs)""
+
+Peut être qu'en indiquant dans la fonction attach() les valeurs limites comme suit attach(brocheservo,477,2150); ? On ne sait jamais.",-0.0909091,0.208333,0,m,jhs,FR
+6695,"Bonjour, j'ai eu aussi ce type d'erreur dans la compilation lorsque j'ai été obligé de revenir à la version 2.0.0 du gestionnaire de carte (suite à problème de reset continu après branchement du retour d'information du servo sur la roche A0).
+
+Dans cette version, j'ai remarqué que la méthode errorToString() ne s'y trouvait pas contrairement à la version 2.2.0 que j'ai remise, et je n'ai plus eu d'erreur ....de compilation car j'hésite maintenant à connecter le retour d'information.
+
+Alain",-0.666667,0.15,0,m,jhs,FR
+7697,"Sérieusement,
+
+J'ai une formation BAC+3 en électronique appliquée, mais je travaille dans la telecom, loin du fer à souder... et j'aimerais m'y remettre pcq'au fond c'est bon :)
+J'ai plusieurs projets sur le feu, dont le principal est un système de gestion de ruches ""intelligent"". Suivit du développement de la colonie, miellée, essaimage,... avec exploitation des datas sur le web.
+Je profite de ces cours gracieusement gratuit pour me remettre dans le bain!",0.4,0.441667,0,m,jhs,BE
+15195,"Bonsoir,
+Comment initialiser les leds au statut éteint?
+Béatrice",-1.0,0.5,1,f,m,FR
+15196,"Bonjour,
+
+je débute, et je souhaiterai savoir si lorsqu'on écrit :
+
+digitalWrite(rougeP,LOW);
+
+digitalWrite(rougeV, HIGH);
+
+digitalWrite(verteP,HIGH);
+
+delay(5000);
+
+la durée de 5 secondes s'applique aux 3 phrases précédentes, ou seulement à celle qui est juste avant?
+
+Merci,
+Béatrice",1.0,0.2,1,f,m,FR
+15199,"Merci Glenn,
+ce que j'ai écrit précédemment en réponse à Yannick n’était pas correct, je m'en rends compte maintenant.
+Béatrice",1.0,0.3,1,f,m,FR
+15200,"Bonjour,
+j'ai lu également rendu le 5 mai.
+Dommage, j'aurai bien terminé ce MOOC en rendant tous les TP!
+Béatrice
+",1.0,0.2875,1,f,m,FR
+15201,"Bonsoir, faut-il déclarer que la barrière est à 0°, et si oui comment le faire? Dans le setup, avec quelle code? Merci, Béatrice",-1.0,0.1,1,f,m,FR
+15202,"Je viens de trouver la réponse à ma question un peu plus loin, en fouillant dans les discussions! Béatrice",-0.333333,0.075,1,f,m,FR
+15203,"Bonjour,
+Je m'appelle Béatrice, je suis architecte et ne connais pas grand chose à tout ça, mais j'ai suivi le MOOC qui vient de se terminer et cela m'a bien plu. Je ne pense pas avoir le temps de me plonger dans celui-ci autant qu'il me serait nécessaire, car si les cours sont très bien fait pour les grands débutants comme moi, j'ai l'impression que ça va se corser! Une question annexe à l'équipe pédagogique : il n'y a pas de femme intéressée pour enseigner avec vous? Merci encore pour ce cours. Béatrice",0.0,0.266667,1,f,m,FR
+15204,"Bonsoir,
+Comment initialiser les leds au statut éteint?
+Béatrice",-1.0,0.5,0,f,m,FR
+15205,"Bonjour,
+
+je débute, et je souhaiterai savoir si lorsqu'on écrit :
+
+digitalWrite(rougeP,LOW);
+
+digitalWrite(rougeV, HIGH);
+
+digitalWrite(verteP,HIGH);
+
+delay(5000);
+
+la durée de 5 secondes s'applique aux 3 phrases précédentes, ou seulement à celle qui est juste avant?
+
+Merci,
+Béatrice",1.0,0.2,0,f,m,FR
+15208,"Merci Glenn,
+ce que j'ai écrit précédemment en réponse à Yannick n’était pas correct, je m'en rends compte maintenant.
+Béatrice",1.0,0.3,0,f,m,FR
+15209,"Bonjour,
+j'ai lu également rendu le 5 mai.
+Dommage, j'aurai bien terminé ce MOOC en rendant tous les TP!
+Béatrice
+",1.0,0.2875,0,f,m,FR
+15210,"Bonsoir, faut-il déclarer que la barrière est à 0°, et si oui comment le faire? Dans le setup, avec quelle code? Merci, Béatrice",-1.0,0.1,0,f,m,FR
+15211,"Je viens de trouver la réponse à ma question un peu plus loin, en fouillant dans les discussions! Béatrice",-0.333333,0.075,0,f,m,FR
+15212,"Bonjour,
+Je m'appelle Béatrice, je suis architecte et ne connais pas grand chose à tout ça, mais j'ai suivi le MOOC qui vient de se terminer et cela m'a bien plu. Je ne pense pas avoir le temps de me plonger dans celui-ci autant qu'il me serait nécessaire, car si les cours sont très bien fait pour les grands débutants comme moi, j'ai l'impression que ça va se corser! Une question annexe à l'équipe pédagogique : il n'y a pas de femme intéressée pour enseigner avec vous? Merci encore pour ce cours. Béatrice",0.0,0.266667,0,f,m,FR
+40560,"Bonjour a tous, jeune ingenieur de 28 ans travaillant depuis peu en securite de fonctionnement applique au domaine de la signalisation ferroviaire, je me suis trouve une veritable curiosite pour le domaine de l'electronique embarquee, domaine que je cotoie de maniere indirecte au quotidien. Je vis a Shanghai, Chine.",-1.0,0.24,0,m,m,CN
+52570,"je suis tombée sur cette carte [wifi][1]  sur le site Bang good et je voudrais savoir si elle correspond a celle demandée pour la deuxième partie du mooc. 
+
+
+  [1]: http://www.banggood.com/fr/NodeMcu-Lua-WIFI-Development-Board-For-ESP8266-Module-p-976440.html",-0.333333,0.266667,1,m,none,FR
+52571,"Merci stiphaen pour cette réponse qui m'a énormément aidé!
+ ",1.0,0.2,1,m,none,FR
+52572,"je suis tombée sur cette carte [wifi][1]  sur le site Bang good et je voudrais savoir si elle correspond a celle demandée pour la deuxième partie du mooc. 
+
+
+  [1]: http://www.banggood.com/fr/NodeMcu-Lua-WIFI-Development-Board-For-ESP8266-Module-p-976440.html",-0.333333,0.266667,0,m,none,FR
+52573,"Merci stiphaen pour cette réponse qui m'a énormément aidé!
+ ",1.0,0.2,0,m,none,FR
+169717,"Bonjour,
+Je m'appelle Eric, j'ai 49 ans, je suis dans l'informatique et je trouve passionnant de pouvoir programmer ou faire des montages avec Arduino et des objets connectés  ... 
+Cdt Eric
+",0.0,0.9,0,m,hs,FR
+170457,"Bonjour,
+Edwin, je suis enseignant et curieux d'apprendre à travers ce MOOC la programmation avec Arduino. 
+",-1.0,0.3,0,m,b,PF
+170720,"Bonjour, j'ai également reçu deux servo-moteurs Batan S1123 défectueux que j'avais commandés sur Semageek pour ce MOOC, mais pas le temps d'attendre le SAV, alors :
+
+ 1. Dévisser les quatre vis du boîtier avec un Philips 000.
+ 2. Déplier sans forcer le circuit imprimé.
+ 3. Couper à raz le gros fil blanc de retour.
+ 4. Le ressouder sur la même borne que le petit fil blanc.
+ 5. Remonter le boîtier en laissant un peu de mou au gros fil blanc à
+    l’intérieur.",-0.8,0.15,0,m,m,RE
+179812,"Merci pour ta réponse, mais bizarrement cette initialisation ce fait après le premier passage dans loop() donc toutes les instructions sont quand même exécutées une fois avant l'initialisation du servomoteur ",-0.333333,0.25,1,m,jhs,BE
+179813,"Merci pour ta réponse, mais bizarrement cette initialisation ce fait après le premier passage dans loop() donc toutes les instructions sont quand même exécutées une fois avant l'initialisation du servomoteur ",-0.333333,0.25,0,m,jhs,BE
+189477,"Bonjour,
+je suis intéressé par ce cours car j'utilise les cartes arduino pour les imprimantes 3D que je construis et je voudrais me perfectionner dans la programmation.
+",1.0,0.0,0,m,hs,FR
+205205,"Bonjour,
+Ingénieur, ecommerçant et photographe. La passion de créer et l'informatique m'ont amené ici. ;-) Impatient de commencer et d'échanger.",1.0,0.75,0,m,m,FR
+216889,"Bonjour, les commentaires en bas de l'exercice vont dans ton sens et je partage cet opinion. Dans l'absolu, le code proposé est hors sujet et mériterais la bulle.
+Messieurs les profs, une boulette à corriger ;-)",0.0,0.4,0,m,b,FR
+216890,"Yann, 41 ans, Cholet(49).
+Électronicien de formation, je travaille dans le bâtiment (génie électrique, GTC/GTB). Je m'intéresse à ce petit Arduino, qui bien qu'un peu rustique, semble idéal pour du prototypage rapide à faible coût. Il devrait également me permettre d'initié mes enfants.
+Voilà, au plaisir d'échanger avec vous :-)",0.333333,0.36,0,m,b,FR
+216892,"Dans ce cas, une résistance montée en série avec la LED permet d'adapter la tension aux bornes de la LED et de limité le courant demandé à la sortie de l'Arduino. En effet, selon le type de technologie (que je ne connais pas pour l'arduino), une sortie commandé à 1 présente une faible impédance vers le 5V. En branchant ta LED en directe, tu risques de claquer la LED (pas très grave) et la sortie de l'Arduino (et là c'est dommage).Pour le calcul, grosso modo :
+Tension nominale d'une LED 1.2V pour un courant nominal de 20mA.
+Niveau haut de sortie Arduino = 5V
+Loi des mailles: 5V= Vrés+Vled -> Vrés=5v-1.2v=3.8v
+Loi d'Ohm: U=RI -> R=U/I=3.8v/0.02A=190Ohms, P=RI²=190x0.0004=76mW.
+Dans le kit Arduino, on te fournit des 220Ohms 1/4w qui feront l'affaire (Les LEDs n'éclairent pas à fond mais la sortie est bien protégée).
+Voilà, en espérant t'avoir éclairé.",-0.375,0.205,0,m,b,FR
+216893,"J'aime bien l'idée du microcontrôleur pour ouvrir un poulailler même si c'est un peu hardcore. Autrement, un inter crépusculaire + un relais, ça marche aussi.
+Bonne continuation.",0.0,0.475,0,m,b,FR
+216894,"Bonjour Christophe,
+Je suis électrotechnicien avec une spécialisation Domotique et GTC/GTB. Tu n'as pas besoin d'apprendre le langage C ou la programmation orientée objet (ce qu'Arduino utilise en gros) pour faire de la Domotique. En domotique, on utilise des systèmes paramétrables plus que programmable au sens informatique du terme. Et tu ne vendras pas d'installation à base d'Arduino (bon courage pour les normes et les garanties!). A titre professionnel, tu dois t'intéresser aux gammes des différents fabriquants d'appareillage électrique (solutions généralement propriétaire) ainsi qu'aux protocoles dédiés aux automatismes de bâtiment:
+KNX, DALI(pour l'éclairage), ZigBee, Enocean...
+Tu peux aussi utiliser des automates industrielles (WAGO, Schneider, Siemens, SAIA...) ou des régulateurs communicants pour de grosses installations avec de la régulation (chauffage, clim., piscine...). Dans ce cas tu auras de la programmation (soit IDE propriétaire, soit CODESYS avec les langages ST, FBD, etc... de la norme CEI61131-3). Le langage ST (pour structuré) ressemble au Pascal et est de type procédural. Il est donc très abordable si tu as les bases de l'algorithmique.
+Je te souhaite une bonne continuation!
+",-0.230769,0.304167,0,m,b,FR
+216895,"Qu'est-ce que wikipedia ?
+https://fr.wikipedia.org/wiki/Arduino
+
+D'une pierre deux coups ?-)",-1.0,0.0,0,m,b,FR
+216896,"Tout dépend de quoi on parle.
+Si on considère une source (transformateur, alimentation stabilisé...), celle-ci est caractérisé par une puissance nominale (ou apparente) P=UxI (3^1/2xUI en tri). Donc pour une puissance donnée, la courant que l'on peut fournir diminue inversement à l'augmentation de la tension (c'est pourquoi on utilise des hautes tensions pour le transport de l'électricité afin de réduire les intensités des courants et réduire ainsi les pertes par effet joule).
+Si on considère une charge, alors effectivement l'intensité qui la traverse sera proportionnelle ou fonction de la tension appliquée, donc pour un dipôle linéaire passif comme une résistance elle augmentera proportionnellement à la tension selon la loi d'Ohm U=RI.
+Bonne continuation.",-0.5,0.335,0,m,b,FR
+227262,"bonjour,
+comme sur les autres messages j'ai ces messages qui s'affiche lorsque je téléverse:
+error: espcomm_open failed
+error: espcomm_upload_mem failed
+J'ai essayé tous les conseils des divers messages : utiliser différent cable USB, de différente longueur, relié sur un HUB ou non, modifier la vitesse de bauds, ou avec un autre programme comme blink, etc... Au final rien n'y fait, ca marche pas. La carte serait-elle défectueuse ? Je suis sur mac. Une dernière solution peut-être ? Merci",-0.384615,0.105,1,m,b,FR
+227263,non ca marche pas.,1.0,0.0,1,m,b,FR
+227264,"Bonjour, après avoir eu se message warning: espcomm_sync failed error: espcomm_open failed j'étais perdu. Ce n'est pas un problème d'alimentation mais de communication. J'ai trouvé la solution. il faut en faite mettre a jour le driver de votre port USB. Je met ici le lien vers le site internet pour pouvoir le faire. 
+https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx
+Cela va créer un nouveau port com, qu'il faudra sélectionner.
+bon courage a tous.",-0.333333,0.3625,1,m,b,FR
+227265,"J'aborde une question que je pensais être vue la semaine 3 ou 4 : l'alimentation de Nelson. Pour que Nelson soit totalement autonome je pensais qu'une batterie serait intégrée dans le boîtier, mais non.il reste accroché à son cable USB pour être alimenté. J'ai vu sur le site adafruit qu'il est possible d'alimenté l'esp par une batterie lithium polymère. Comment alors faire le branchement de cette batterie? pour rendre Nelson libre. Merci",-0.4,0.425,1,m,b,FR
+227266,"bonjour,
+comme sur les autres messages j'ai ces messages qui s'affiche lorsque je téléverse:
+error: espcomm_open failed
+error: espcomm_upload_mem failed
+J'ai essayé tous les conseils des divers messages : utiliser différent cable USB, de différente longueur, relié sur un HUB ou non, modifier la vitesse de bauds, ou avec un autre programme comme blink, etc... Au final rien n'y fait, ca marche pas. La carte serait-elle défectueuse ? Je suis sur mac. Une dernière solution peut-être ? Merci",-0.384615,0.105,0,m,b,FR
+227267,non ca marche pas.,1.0,0.0,0,m,b,FR
+227268,"Bonjour, après avoir eu se message warning: espcomm_sync failed error: espcomm_open failed j'étais perdu. Ce n'est pas un problème d'alimentation mais de communication. J'ai trouvé la solution. il faut en faite mettre a jour le driver de votre port USB. Je met ici le lien vers le site internet pour pouvoir le faire. 
+https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx
+Cela va créer un nouveau port com, qu'il faudra sélectionner.
+bon courage a tous.",-0.333333,0.3625,0,m,b,FR
+227269,"J'aborde une question que je pensais être vue la semaine 3 ou 4 : l'alimentation de Nelson. Pour que Nelson soit totalement autonome je pensais qu'une batterie serait intégrée dans le boîtier, mais non.il reste accroché à son cable USB pour être alimenté. J'ai vu sur le site adafruit qu'il est possible d'alimenté l'esp par une batterie lithium polymère. Comment alors faire le branchement de cette batterie? pour rendre Nelson libre. Merci",-0.4,0.425,0,m,b,FR
+235761,"/*
+  Feu tricolore
+  Orange allumée pendant 1 seconde
+  Rouge allumée pendant 3 secondes
+  Verte allumée pendant 3 secondes
+*/
+ 
+// Numéros des broche utilisées
+int ledr = 13;  //led rouge
+int ledo = 12;  //led orange
+int ledv = 11;  //led verte
+ 
+void setup() {
+  // indique que les broches des LEDS sont en sortie :
+  pinMode(ledr, OUTPUT);
+  pinMode(ledo, OUTPUT);
+  pinMode(ledv, OUTPUT);
+}
+ 
+void loop() {
+  digitalWrite(ledo, HIGH);   // allumer la LED orange 
+  delay(1000);               // attendre 1000ms = 1s
+  digitalWrite(ledo, LOW);    // éteindre la LED orange
+  delay(500);               // attendre 1.5 seconde
+    digitalWrite(ledr, HIGH);   // allumer la LED rouge
+  delay(3000);               // attendre 3s
+  digitalWrite(ledr, LOW);    // éteindre la LED rouge
+  delay(500);                 // attendre 1.5 seconde
+  digitalWrite(ledv, HIGH);   // allumer la LED verte
+  delay(3000);               // attendre 3s
+  digitalWrite(ledv, LOW);    // éteindre la LED verte
+  delay(500);                 // attendre 1.5 seconde
+}",-0.333333,0.42,0,m,jhs,FR
+245895,"bonjour,
+
+rien ne bouge non plus sur ma simultation;  j' ai un doute sur le branchement :
+fil rouge du servo sur D1
+fil blanc du servo sur D9 
+
+Merci de me corriger.",-0.333333,0.06,0,m,m,FR
+246762,"Pierre, prof de technologie :
+
+Je viens sur ce mooc pour prendre une avance définitive sur mes élèves ! :-)
+en effet, je me suis lancé dans la fabrication et programmation d'un robot suiveur de ligne avec les élèves de 3ème (sur une base arduino)
+J'ai besoin d'approfondir afin d'acquérir la maîtrise nécessaire pour encadrer correctement les élèves et surtout être une ressource efficace .
+
+Si le mooc débordait sur scratch, ce serait la cerise sur le gâteau.
+Bon courage à tous, merci à l'équipe qui anime ce mooc
+
+",-0.0769231,0.355556,0,m,m,FR
+257085,"Si la valeur dépasse les 179°, il aurais été plus logique de soustraire 180 et non 179
+
+ex: 
+
+180 => 0 (et non 1°)
+
+270 => 90 (et non 91°)
+
+pourquoi avoir imposé ce degré de décalage ?",0.555556,0.146,0,m,b,TN
+257086,"Si la valeur dépasse les 179°, il aurais été plus logique de soustraire 180 et non 179
+
+ex: 
+
+180 => 0 (et non 1°)
+
+270 => 90 (et non 91°)
+
+pourquoi avoir imposé ce degré de décalage ?",0.555556,0.146,1,m,b,TN
+262269,"On peut repérer la polarité d'une LED de 2 manières : 
+
+* sur la LED il doit y avoir un méplat qui correspond au pôle ""-"", le bord arrondi au pôle ""+"" 
+
+* la broche la plus courte correspond au pôle ""-"", la plus longue au pôle ""+"" 
+
+Le pôle plus est appelé anode, le moins cathode. 
+Les LED ne laissent passer le courant que dans 1 sens : du ""+"" vers de ""-"" 
+
+",0.333333,0.052,1,m,b,FR
+262270,"L'élément à l'extrême droite du montage est une trace de doigts...
+
+;-)
+
+C'est un résidu du montage : le début de la pose d'un fil sur la platine (montage réalisé sous logiciel...)",-0.333333,0.5,1,m,b,FR
+262271,"Bonjour,
+Je n'ai pas de KIT non plus et j'ai réussi malgré tout à m'en sortir avec le logiciel en ligne proposé pour ce MOOC (https://123d.circuits.io).
+
+C'est suffisant pour le début même si on perd un peu le côté ""bricolage"" qui, de toute façon n'est pas vraiment mis en avant.
+
+Bon courage, le retard ce rattrape vite.
+
+;-)",-0.0909091,0.320192,1,m,b,FR
+262272,"Bonjour,
+
+Je constate que le code utilisé dans les réponses aux TP n'est pas indenté.
+Sur le 1er TP que j'ai été amené à évaluer, j'ai signalé dans les commentaires que la bonne pratique voulait que l'on insère des retraits dans son code, que l'on aère les commentaires etc. Une remarque pour informer simplement...
+
+Jusqu'à m’apercevoir que l'indentation du code que j'ai fourni pour ce TP avait disparu... 
+Erreur de copié/collé j'ai d'abord pensé. Mais idem pour le second TP : l'indentation du code avait sauté.
+
+Pour le moment seules quelques lignes constituent nos programmes et il y a peu de complexité (je n'ai pas dis difficulté...).
+Qu'en sera-t-il si le code se densifie ?
+Les retraits permettent de conserver un peu de clarté dans le programme : il respire...
+
+Est-il donc possible de conserver l'indentation du code ? 
+Certains ont-ils une astuce ou trouvé comment faire ?
+
+Par avance merci.
+
+;-)
+",0.0,0.307692,1,m,b,FR
+262273,"Bonsoir,
+
+2 fonctionnements sont à mettre en place pour ce TP : normal et piéton.
+
+Pour le fonctionnement normal, le feu piéton est constamment au rouge, le feu tricolore est au vert pendant 3 secondes puis s'éteint. Alors le feu orange s'allume pendant 1 seconde et s'éteint puis le feu rouge s'allume pendant 3 secondes et s'éteint. Il n'y a donc à chaques fois qu'une seule LED du feu tricolore qui est allumé ,le feu piéton est au rouge.
+
+**Si** le bouton poussoir est appuyé pendant que le feu tricolore est au vert **alors** on entre dans le fonctionnement ""piéton : le feu tricolore orange s'allume toujours pendant 1 secondes mais ensuite le feu rouge s'allume pendant 5 secondes. En plus, le feu piéton rouge s'éteint et le feu vert piéton s'allume.
+
+A l'issue de ces 5 secondes, le feu tricolore rouge s'éteint tout comme la LED verte piéton.
+On repasse alors dans le fonctionnement normal si le bouton poussoir n'est pas appuyé pendant que le feu tricolore est au vert.
+
+Une autre façon de décrire le fonctionnement (moins littérale...)
+  
+    feu piéton rouge allumé
+    feu piéton vert éteint
+    feu tricolore orange éteint
+    feu tricolore rouge éteint
+    
+    feu tricolore vert allumé pendant 3 secondes **puis sera éteint (!!)**
+    si bouton poussoir appuyé alors
+         feu tricolore orange allumé pendant 1 seconde puis éteint
+         feu tricolore rouge allumé pendant 5 secondes puis éteint
+         feu piéton rouge éteint, feu piéton vert allumé pendant 5 secondes
+    sinon
+         feu tricolore orange allumé pendant 1 seconde puis éteint
+         feu tricolore rouge allumé pendant 3 secondes **puis éteint (?)**
+
+Et tout ça en répétition...
+
+;-)
+
+Je ne sais pas si c'est plus claire pour toi maintenant ?
+
+
+
+
+",0.234043,0.212706,1,m,b,FR
+262274,"    Pas n'importe quel whisky alors !!
+    Sinon tu risques d'avoir encore plus de migraine qu'avant de poster ton commentaire très pédagogique...",-0.333333,0.375,1,m,b,FR
+262275,"    Visiblement tu as aussi du mal à en expliquer les raisons... 
+    C'est dommage, ça aurait pût aider pour te donner un peu d'élan... 
+    Aurais-tu un peu plus de détails à donner sur les difficultés rencontrées ou ce que tu ne comprends pas ?",-0.5,0.38125,1,m,b,FR
+262276,"    Bonsoir,
+    Non, aucun prérequis.
+    Si tu n'as jamais fait de développement, prend le temps de bien comprendre les exemples et le cours, avance doucement sans sauter d'étapes (même celles qui te sembles simples) et ça devrait bien se passer.
+    Tu as le wiki en complément et le forum si tu as des questions.
+    ;-)
+    Bon courage",0.4,0.433333,1,m,b,FR
+262277,"Juste un petit rappel de ce qui est indiqué dans l'énoncé (de la partie réponse) :
+
+""plus la luminosité reçue par la photorésistance est importante, plus la fréquence jouée par le buzzer sera élevée (et inversement, si on passe notre main devant le capteur de luminosité alors le son émis sera grave→fréquence basse).""
+
+J'espère que ça va te mettre sur la piste...",0.0,0.221429,1,m,b,FR
+262278,"    Tout à fait : il suffit d'appuyer sur le bouton poussoir avec ta souris (clic gauche). 
+    Et j'ajouterais que tu as un indicateur lumineux dans l'angle inférieur gauche du bouton poussoir qui t'indique qu'il est bien enfoncé : un point vert s'allume quand tu simules l'appuie avec la souris, il s'éteint lorsque l'on relâche le clic gauche",-0.333333,0.288889,1,m,b,FR
+262279,"    Bonjour,
+    Cette semaine, le cours et le TP nous font découvrir la bibliothèque ""Serial"" pour communiquer entre l'Arduino et un ordinateur.
+    Et si l'on utilise le logiciel 123d.circuits, comment visualiser/récupérer le texte envoyé à partir de l'Arduino ?
+    Pour l'instant je n'ai pas trouvé... Une idée sur le sujet ??
+    
+    En contournement de ce problème, j'ai ajouté au montage un écran LCD.
+    Bon, ça fonctionne mais du coup soulève aussi d'autres questions qui feront l'objet d'un autre post (notamment sur les valeurs retournées ainsi que sur le fonctionnement global du montage).",-0.333333,0.19375,1,m,b,FR
+262280,"Salut,
+
+Il est vrai que reprendre le schéma tel quel quand il est fournit pour le TP facilite grandement la correction, surtout pour ceux qui sont les moins à l'aise avec ce MOOC. 
+D'autant que dans les 2 premiers TP il n'était pas possible de fournir un visuel du montage.
+Mais, il est toujours possible de faire une description de son montage, des composants utilisés, du fonctionnement etc. 
+Que le montage soit celui du TP ou customisé, ça aide toujours et précise les choses.
+        
+Après, faire le montage à sa sauce, si il est correct apporte beaucoup. Déjà, ça montre que la personne se l'est approprié. 
+Et le code, si il est bien commenté, n'est pas plus difficile à corriger.
+Effectivement, ça demande au ""correcteur"" de se poser un peu pour comprendre ou interpréter. Je pense que c'est complémentaire aux cours : c'est un autre moyen d'intégrer les informations en étant actif dans la correction.
+
+Dans la ""vraie vie"", c'est à dire hors de ce MOOC, si l'on cherche des informations sur du code ou un montage il faudra se plier à ce qui est donné et se le ré-approprier. Si l'on soumet une question sur un forum, ce sera aux autres de faire cette démarche et donc à nous de transmettre des informations claires et précises pour être facilement compris et ne pas créer d’ambiguïtés.
+
+Pour moi donc ce n'est pas un problème que le montage ou le code soit un peu différent. Bien au contraire, j'y vois plus de positif que de négatif. Et ce que ce soit pour celui qui soumet que celui qui évalue...",0.103448,0.277507,1,m,b,FR
+262281,"Et tu pourrais même enlever le `digitalWrite(rougePieton, HIGH);` dans le ""if"" puisque tu forces déjà le feu rouge piéton à l'état ""allumé"" en tout début de boucle...
+Non ??",-0.333333,0.258333,1,m,b,FR
+262282,"Exact !!
+
+Je n'ai pas fait attention aux items complémentaires présentes dans l'onglet code du logiciel. Je mets le montage en pleine page lorsque je lance la simulation.
+
+Merci pour l'info.
+
+;-)",0.0,0.37,1,m,b,FR
+262283,"    Bonjour,    
+    La partie devoir se décompose de la sorte :
+        - un QCM de 5 questions (chacune apporte 1 point)
+        - un TP à réaliser pour compléter l'évaluation (15 points)
+        
+        Il y a 2 étapes dans la partie TP :
+        1=> tout d'abord fournir un programme qui répond à la consigne. Le code est à mettre dans la partie ""Your response"" (copier/coller de ta production). Le code sera évalué par des pairs.
+        2=> une fois la réponse à la consigne envoyée pour évaluation, c'est à toi d'évaluer 2 à 3 autres participants.",0.0,0.05,1,m,b,FR
+262284,"Bonjour,
+
+Pour ceux qui réalisent les TP sous 123d.circuits, pourquoi ne pas fournir le lien vers le montage en commentaire au tout début du code soumis à évaluation ?
+
+Personnellement je trouve que ce serait un plus aussi bien pour les évaluateurs qui pourront découvrir d'autres montages ou un code mieux indenté, que pour les évalués et notamment ceux qui ... euh... huuum... râlent un peu.
+
+Avec la limite que le code à prendre en compte sera toujours celui soumis à évaluation sur le site du MOOC et non celui qui est présent sur 123d.circuits puisqu'il peut être modifié à posteriori.
+
+Vous en pensez quoi ?
+ 
+
+",-0.0769231,0.1,1,m,b,FR
+262285,"Bonjour,
+
+Oui, ""delay"" n'est pas des plus adapté pour détecter réellement l'appuie lorsque le feu tricolore est vert... 
+On se contente donc de détecter la pression sur la transition entre le vert et le orange. 
+
+Je t'invite à parcourir le forum : le sujet y est abordé plusieurs fois. Tu y trouvera des éléments de réponse complémentaires. 
+",0.142857,0.157143,1,m,b,FR
+262286,"Bonjour, 
+
+Difficile sans code de répondre mais je dirais de regarder si les paramètres renseignés pour ""tone"" sont cohérents...
+
+Et avant ""tone"" tu as quoi comme lignes de code ? 
+
+Sinon p'tet des caractères accentués dans tes noms de variable ? Dans ce cas les remplacer... ",1.0,0.5,1,m,b,FR
+262287,"Bonne pratique :
+
+De manière générale, en programmation, pas de caractères spéciaux ou accentués dans les noms de variable. 
+
+C'est plus prudent et évite les déconvenues. ",1.0,0.338,1,m,b,FR
+262288,"On peut repérer la polarité d'une LED de 2 manières : 
+
+* sur la LED il doit y avoir un méplat qui correspond au pôle ""-"", le bord arrondi au pôle ""+"" 
+
+* la broche la plus courte correspond au pôle ""-"", la plus longue au pôle ""+"" 
+
+Le pôle plus est appelé anode, le moins cathode. 
+Les LED ne laissent passer le courant que dans 1 sens : du ""+"" vers de ""-"" 
+
+",0.333333,0.052,0,m,b,FR
+262289,"L'élément à l'extrême droite du montage est une trace de doigts...
+
+;-)
+
+C'est un résidu du montage : le début de la pose d'un fil sur la platine (montage réalisé sous logiciel...)",-0.333333,0.5,0,m,b,FR
+262290,"Bonjour,
+Je n'ai pas de KIT non plus et j'ai réussi malgré tout à m'en sortir avec le logiciel en ligne proposé pour ce MOOC (https://123d.circuits.io).
+
+C'est suffisant pour le début même si on perd un peu le côté ""bricolage"" qui, de toute façon n'est pas vraiment mis en avant.
+
+Bon courage, le retard ce rattrape vite.
+
+;-)",-0.0909091,0.320192,0,m,b,FR
+262291,"Bonjour,
+
+Je constate que le code utilisé dans les réponses aux TP n'est pas indenté.
+Sur le 1er TP que j'ai été amené à évaluer, j'ai signalé dans les commentaires que la bonne pratique voulait que l'on insère des retraits dans son code, que l'on aère les commentaires etc. Une remarque pour informer simplement...
+
+Jusqu'à m’apercevoir que l'indentation du code que j'ai fourni pour ce TP avait disparu... 
+Erreur de copié/collé j'ai d'abord pensé. Mais idem pour le second TP : l'indentation du code avait sauté.
+
+Pour le moment seules quelques lignes constituent nos programmes et il y a peu de complexité (je n'ai pas dis difficulté...).
+Qu'en sera-t-il si le code se densifie ?
+Les retraits permettent de conserver un peu de clarté dans le programme : il respire...
+
+Est-il donc possible de conserver l'indentation du code ? 
+Certains ont-ils une astuce ou trouvé comment faire ?
+
+Par avance merci.
+
+;-)
+",0.0,0.307692,0,m,b,FR
+262292,"Bonsoir,
+
+2 fonctionnements sont à mettre en place pour ce TP : normal et piéton.
+
+Pour le fonctionnement normal, le feu piéton est constamment au rouge, le feu tricolore est au vert pendant 3 secondes puis s'éteint. Alors le feu orange s'allume pendant 1 seconde et s'éteint puis le feu rouge s'allume pendant 3 secondes et s'éteint. Il n'y a donc à chaques fois qu'une seule LED du feu tricolore qui est allumé ,le feu piéton est au rouge.
+
+**Si** le bouton poussoir est appuyé pendant que le feu tricolore est au vert **alors** on entre dans le fonctionnement ""piéton : le feu tricolore orange s'allume toujours pendant 1 secondes mais ensuite le feu rouge s'allume pendant 5 secondes. En plus, le feu piéton rouge s'éteint et le feu vert piéton s'allume.
+
+A l'issue de ces 5 secondes, le feu tricolore rouge s'éteint tout comme la LED verte piéton.
+On repasse alors dans le fonctionnement normal si le bouton poussoir n'est pas appuyé pendant que le feu tricolore est au vert.
+
+Une autre façon de décrire le fonctionnement (moins littérale...)
+  
+    feu piéton rouge allumé
+    feu piéton vert éteint
+    feu tricolore orange éteint
+    feu tricolore rouge éteint
+    
+    feu tricolore vert allumé pendant 3 secondes **puis sera éteint (!!)**
+    si bouton poussoir appuyé alors
+         feu tricolore orange allumé pendant 1 seconde puis éteint
+         feu tricolore rouge allumé pendant 5 secondes puis éteint
+         feu piéton rouge éteint, feu piéton vert allumé pendant 5 secondes
+    sinon
+         feu tricolore orange allumé pendant 1 seconde puis éteint
+         feu tricolore rouge allumé pendant 3 secondes **puis éteint (?)**
+
+Et tout ça en répétition...
+
+;-)
+
+Je ne sais pas si c'est plus claire pour toi maintenant ?
+
+
+
+
+",0.234043,0.212706,0,m,b,FR
+262293,"    Pas n'importe quel whisky alors !!
+    Sinon tu risques d'avoir encore plus de migraine qu'avant de poster ton commentaire très pédagogique...",-0.333333,0.375,0,m,b,FR
+262294,"    Visiblement tu as aussi du mal à en expliquer les raisons... 
+    C'est dommage, ça aurait pût aider pour te donner un peu d'élan... 
+    Aurais-tu un peu plus de détails à donner sur les difficultés rencontrées ou ce que tu ne comprends pas ?",-0.5,0.38125,0,m,b,FR
+262295,"    Bonsoir,
+    Non, aucun prérequis.
+    Si tu n'as jamais fait de développement, prend le temps de bien comprendre les exemples et le cours, avance doucement sans sauter d'étapes (même celles qui te sembles simples) et ça devrait bien se passer.
+    Tu as le wiki en complément et le forum si tu as des questions.
+    ;-)
+    Bon courage",0.4,0.433333,0,m,b,FR
+262296,"Juste un petit rappel de ce qui est indiqué dans l'énoncé (de la partie réponse) :
+
+""plus la luminosité reçue par la photorésistance est importante, plus la fréquence jouée par le buzzer sera élevée (et inversement, si on passe notre main devant le capteur de luminosité alors le son émis sera grave→fréquence basse).""
+
+J'espère que ça va te mettre sur la piste...",0.0,0.221429,0,m,b,FR
+262297,"    Tout à fait : il suffit d'appuyer sur le bouton poussoir avec ta souris (clic gauche). 
+    Et j'ajouterais que tu as un indicateur lumineux dans l'angle inférieur gauche du bouton poussoir qui t'indique qu'il est bien enfoncé : un point vert s'allume quand tu simules l'appuie avec la souris, il s'éteint lorsque l'on relâche le clic gauche",-0.333333,0.288889,0,m,b,FR
+262298,"    Bonjour,
+    Cette semaine, le cours et le TP nous font découvrir la bibliothèque ""Serial"" pour communiquer entre l'Arduino et un ordinateur.
+    Et si l'on utilise le logiciel 123d.circuits, comment visualiser/récupérer le texte envoyé à partir de l'Arduino ?
+    Pour l'instant je n'ai pas trouvé... Une idée sur le sujet ??
+    
+    En contournement de ce problème, j'ai ajouté au montage un écran LCD.
+    Bon, ça fonctionne mais du coup soulève aussi d'autres questions qui feront l'objet d'un autre post (notamment sur les valeurs retournées ainsi que sur le fonctionnement global du montage).",-0.333333,0.19375,0,m,b,FR
+262299,"Salut,
+
+Il est vrai que reprendre le schéma tel quel quand il est fournit pour le TP facilite grandement la correction, surtout pour ceux qui sont les moins à l'aise avec ce MOOC. 
+D'autant que dans les 2 premiers TP il n'était pas possible de fournir un visuel du montage.
+Mais, il est toujours possible de faire une description de son montage, des composants utilisés, du fonctionnement etc. 
+Que le montage soit celui du TP ou customisé, ça aide toujours et précise les choses.
+        
+Après, faire le montage à sa sauce, si il est correct apporte beaucoup. Déjà, ça montre que la personne se l'est approprié. 
+Et le code, si il est bien commenté, n'est pas plus difficile à corriger.
+Effectivement, ça demande au ""correcteur"" de se poser un peu pour comprendre ou interpréter. Je pense que c'est complémentaire aux cours : c'est un autre moyen d'intégrer les informations en étant actif dans la correction.
+
+Dans la ""vraie vie"", c'est à dire hors de ce MOOC, si l'on cherche des informations sur du code ou un montage il faudra se plier à ce qui est donné et se le ré-approprier. Si l'on soumet une question sur un forum, ce sera aux autres de faire cette démarche et donc à nous de transmettre des informations claires et précises pour être facilement compris et ne pas créer d’ambiguïtés.
+
+Pour moi donc ce n'est pas un problème que le montage ou le code soit un peu différent. Bien au contraire, j'y vois plus de positif que de négatif. Et ce que ce soit pour celui qui soumet que celui qui évalue...",0.103448,0.277507,0,m,b,FR
+262300,"Et tu pourrais même enlever le `digitalWrite(rougePieton, HIGH);` dans le ""if"" puisque tu forces déjà le feu rouge piéton à l'état ""allumé"" en tout début de boucle...
+Non ??",-0.333333,0.258333,0,m,b,FR
+262301,"Exact !!
+
+Je n'ai pas fait attention aux items complémentaires présentes dans l'onglet code du logiciel. Je mets le montage en pleine page lorsque je lance la simulation.
+
+Merci pour l'info.
+
+;-)",0.0,0.37,0,m,b,FR
+262302,"    Bonjour,    
+    La partie devoir se décompose de la sorte :
+        - un QCM de 5 questions (chacune apporte 1 point)
+        - un TP à réaliser pour compléter l'évaluation (15 points)
+        
+        Il y a 2 étapes dans la partie TP :
+        1=> tout d'abord fournir un programme qui répond à la consigne. Le code est à mettre dans la partie ""Your response"" (copier/coller de ta production). Le code sera évalué par des pairs.
+        2=> une fois la réponse à la consigne envoyée pour évaluation, c'est à toi d'évaluer 2 à 3 autres participants.",0.0,0.05,0,m,b,FR
+262303,"Bonjour,
+
+Pour ceux qui réalisent les TP sous 123d.circuits, pourquoi ne pas fournir le lien vers le montage en commentaire au tout début du code soumis à évaluation ?
+
+Personnellement je trouve que ce serait un plus aussi bien pour les évaluateurs qui pourront découvrir d'autres montages ou un code mieux indenté, que pour les évalués et notamment ceux qui ... euh... huuum... râlent un peu.
+
+Avec la limite que le code à prendre en compte sera toujours celui soumis à évaluation sur le site du MOOC et non celui qui est présent sur 123d.circuits puisqu'il peut être modifié à posteriori.
+
+Vous en pensez quoi ?
+ 
+
+",-0.0769231,0.1,0,m,b,FR
+262304,"Bonjour,
+
+Oui, ""delay"" n'est pas des plus adapté pour détecter réellement l'appuie lorsque le feu tricolore est vert... 
+On se contente donc de détecter la pression sur la transition entre le vert et le orange. 
+
+Je t'invite à parcourir le forum : le sujet y est abordé plusieurs fois. Tu y trouvera des éléments de réponse complémentaires. 
+",0.142857,0.157143,0,m,b,FR
+262305,"Bonjour, 
+
+Difficile sans code de répondre mais je dirais de regarder si les paramètres renseignés pour ""tone"" sont cohérents...
+
+Et avant ""tone"" tu as quoi comme lignes de code ? 
+
+Sinon p'tet des caractères accentués dans tes noms de variable ? Dans ce cas les remplacer... ",1.0,0.5,0,m,b,FR
+262306,"Bonne pratique :
+
+De manière générale, en programmation, pas de caractères spéciaux ou accentués dans les noms de variable. 
+
+C'est plus prudent et évite les déconvenues. ",1.0,0.338,0,m,b,FR
+262726,"Bonjour à tous, je suis technicien info, adore apprendre et découvrir, côté info je me débrouille, coté électronique, je ne demande qu'à voir !",1.0,0.2,0,m,hs,FR
+275928,"Est-ce qu'une résistance doit être placé obligatoirement AVANT la led ? 
+
+Si ce n'est pas le cas, on pourrait très bien placer une résistance à la fin du montage pour économiser 2 résistances non ?",0.142857,0.2875,1,m,m,FR
+275929,"Merci beaucoup pour vos explications, je pense que vous avez raison. Je ferai attention désormais :)
+
+",-1.0,0.433333,1,m,m,FR
+275930,"Est-ce qu'une résistance doit être placé obligatoirement AVANT la led ? 
+
+Si ce n'est pas le cas, on pourrait très bien placer une résistance à la fin du montage pour économiser 2 résistances non ?",0.142857,0.2875,0,m,m,FR
+275931,"Merci beaucoup pour vos explications, je pense que vous avez raison. Je ferai attention désormais :)
+
+",-1.0,0.433333,0,m,m,FR
