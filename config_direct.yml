@@ -1,0 +1,14 @@
+mysql:
+  user:           root
+  password:       greta2023
+  host:           127.0.0.1
+  port:           3306
+  driver:           mysql
+  database:        g3_MOOC
+
+mongo:
+  password:       
+  user:           
+  host:           127.0.0.1
+  port:           27017
+  driver:         mongodb        

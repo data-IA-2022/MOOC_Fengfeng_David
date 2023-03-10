@@ -2,11 +2,11 @@ import pandas as pd
 import numpy as np
 from polyglot.detect import Detector
 from polyglot.text import Text
-from sqlalchemy import create_engine
-from utils import get_config
 from textblob import TextBlob as tb
 from textblob_fr import PatternTagger, PatternAnalyzer
 from IPython.display import display
+from utils import get_config
+from sqlalchemy import create_engine
 
 def detect_lang(text):
   try:

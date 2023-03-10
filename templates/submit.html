@@ -1,14 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-</head>
-<body>
-    <form method="POST" action="/mongo">
-        {% form.csrf_token %}
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}Peux-tu être éligible à une certification ?{% endblock %}</h1>
+    <div class="form">
+        <form method="post" action='/submit'>
+            {{ form.csrf_token }}
+            <fieldset>
+                <legend>Genre</legend>
+                    <div>
+                        <input type="radio" name="gender" class="gender" id="female" value="f" required checked>
+                        <label for="female">female</label>
+                        <br>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" class="gender" id="male" value="m" required>
+                        <label for="male">male</label>
+                        <br>
+                    </div>
+            </fieldset>
+            <fieldset>
+                <legend>Pays</legend>
+                <select name="country" id="country-id" required>
+                    {% for item in countries  %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select><br>
+            </fieldset>
+                
+            <fieldset>
+                <legend>Education</legend>
+                <select name="education" id="education-id" required>
+                    {% for item in education %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select><br>
+            </fieldset>
+            <fieldset>
+                <legend>Message</legend>
+                <textarea name="message"
+                    placeholder="Message content"
+                    rows="15"
+                    cols="60"
+                    required
+                    >{{ request.form['msg'] }}</textarea>
+                <br>
+            </fieldset>
+            
+            <input type="submit" value="Submit" id="submit-ip">
+            {% if result!=None%}
+                <p class="result">
+                    Result : <span id="result">{{ result }}</span><br>
+                    Accuracy : <span id="score">{{ score }}</span>
+                </p>
+            {% endif %}
+        </form>
+    </div>
+    
+{% endblock %}

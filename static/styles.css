@@ -1,3 +1,109 @@
-.y {
-    color: red;
+body, hr {
+    margin: 0;
+}
+nav a {
+    color: #d64161;
+    font-size: 3em;
+    margin-left: 50px;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav {
+    background-color: beige;
+}
+
+#home-title {
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: rgb(187, 21, 21);
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 4px;
+}
+
+input[type="radio"].gender {
+    display: none;
+  }
+  input[type="radio"].gender + label {
+    position: relative;
+    padding-left: 1.3rem;
+  }
+  input[type="radio"].gender + label::before,
+  input[type="radio"].gender + label::after {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    left: 0;
+    content:'';
+    width: 1rem;
+    height: 1rem; 
+    border-radius: 1rem;
+  }
+  input[type="radio"].gender + label::before {
+    border: 1px solid rgb(187, 21, 21);
+    background-color: #eee;
+  }
+  input[type="radio"].gender:checked + label::after {
+    background-color: rgb(187, 21, 21);
+  }
+
+.gender-label {
+    margin-bottom: 12px;
+}
+
+div.form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top: 20px;
+  }
+#result {
+    color: rgb(187, 21, 21);
+}
+
+#score {
+    font-weight: bold;
+}
+
+#country-id, #education-id,#genre-span {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.gender {
+    margin-bottom: 10px;
+}
+
+form {
+    font-size: 24px;
 }
