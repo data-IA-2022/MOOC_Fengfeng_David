@@ -5,6 +5,7 @@ from sqlalchemy import MetaData, create_engine
 from sqlalchemy.dialects.mysql import insert
 from utils import calc_time, get_config
 
+# Ne fonctionne pas
 def recur_message(msg, f, thread_id, parent_id = None, course_id=None):
     '''
     Cette fonction fait un traitement messages de l'objet JSON passé
