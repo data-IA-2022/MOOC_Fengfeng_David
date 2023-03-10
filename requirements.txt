@@ -96,7 +96,6 @@ psutil==5.9.4
 ptyprocess==0.7.0
 pure-eval==0.2.2
 pyarrow==11.0.0
-pycaret==2.3.10
 pycld2==0.41
 pydantic==1.10.5
 Pygments==2.14.0
