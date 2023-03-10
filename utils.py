@@ -1,9 +1,13 @@
 import time
+import numpy as np
 from os.path import dirname, join
-
+from textblob import TextBlob as tb
+from textblob_fr import PatternTagger, PatternAnalyzer
 import yaml
 from sshtunnel import SSHTunnelForwarder
-
+from polyglot.detect import Detector
+from polyglot.downloader import downloader
+from polyglot.text import Text
 
 def relative_path(*path):
 
@@ -78,3 +82,34 @@ def get_config(cnx):
         return "{driver}://{user}:{password}@{host}:{port}/{database}".format(**cfg)
     elif cnx == 'mongo':
         return "{driver}://{host}:{port}".format(**cfg)
+    
+def detect_lang(text):
+  try:
+    detect = Detector(text)
+    return detect.language.code
+  except Exception:
+    return np.nan
+
+def get_polarity(text):
+  lang = detect_lang(text)
+  text_analysed = Text(text, hint_language_code=lang)
+  try:
+    return text_analysed.polarity
+  except Exception:
+    return np.nan
+      
+def get_subjectivity(text):
+  lang = detect_lang(text)
+  blob = tb(text, pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
+  if lang == "en":
+    try:
+      return tb(text).sentiment.subjectivity
+    except Exception:
+      return np.nan
+  elif lang == "fr":
+    try:
+      return blob.sentiment[1]
+    except Exception:
+      return np.nan
+  else:
+    return np.nan
